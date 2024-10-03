@@ -1,6 +1,7 @@
 import { Controller, Get, HttpStatus, Res } from '@nestjs/common';
 import { Response } from 'express';
 import { StatusService } from './status.service';
+import { Status } from './status.entity';
 
 @Controller('status')
 export class StatusController {
@@ -8,11 +9,11 @@ export class StatusController {
   @Get()
   async GetStatus(@Res() res: Response) {
     const databaseStats = await this.service.getDatabaseStats();
-    const response = {
+    const response: Status = {
       created_at: new Date().toUTCString(),
       dependencies: {
         database: {
-          database_version: databaseStats.version,
+          database_version: databaseStats.database_version,
           max_connections: databaseStats.max_connections,
           active_connections: databaseStats.active_connections,
         },

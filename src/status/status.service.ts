@@ -1,17 +1,12 @@
 import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../prisma/prisma.service';
-
-type DatabaseStats = {
-  active_connections: number;
-  version: string;
-  max_connections: number;
-};
+import { Database } from './status.entity';
 
 @Injectable()
 export class StatusService {
   constructor(private prismaService: PrismaService) {}
 
-  async getDatabaseStats(): Promise<DatabaseStats> {
+  async getDatabaseStats(): Promise<Database> {
     const version = await this.getDatabaseVersion();
 
     const activeConnections = await this.getActiveConnectionsNumber();
@@ -19,10 +14,10 @@ export class StatusService {
     const maxConnections = await this.getMaxConnections();
 
     return {
+      database_version: version,
       active_connections: activeConnections,
-      version,
       max_connections: maxConnections,
-    } as DatabaseStats;
+    } as Database;
   }
 
   async getDatabaseVersion() {
