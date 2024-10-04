@@ -42,7 +42,7 @@ describe('UserService', () => {
     expect(result).toBeDefined();
     expect(result).toEqual(user);
   });
-  it('should return the user when get by id', async () => {
+  it('should NOT return the user when get by id', async () => {
     const result = await service.GetUserById(faker.number.int());
     expect(result).toBeUndefined();
   });
