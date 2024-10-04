@@ -1,7 +1,7 @@
 export class UserResponseDto {
-  nome: string;
+  name: string;
   cpf: string;
   email: string;
-  cargo: string;
+  role: Roles;
   created_at: Date;
 }

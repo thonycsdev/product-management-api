@@ -88,4 +88,16 @@ describe('AccountController', () => {
     });
     expect(response.status).toBe(HttpStatus.BAD_REQUEST);
   });
+  it('Should increase the size of the array when create a account for a user', async () => {
+    const dto = userFixture.buildAccountRequestDTO();
+
+    var response = await fetch('http://localhost:3000/account/create', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(dto),
+    });
+    expect(response.status).toBe(201);
+  });
 });

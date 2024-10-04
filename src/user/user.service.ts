@@ -35,10 +35,10 @@ export class UserService {
     if (!user) return undefined;
 
     const response: UserResponseDto = {
-      nome: user.nome,
+      name: user.name,
       cpf: user.cpf,
       email: user.email,
-      cargo: user.cargo,
+      role: user.role as Roles,
       created_at: user.createdAt,
     };
     return response;

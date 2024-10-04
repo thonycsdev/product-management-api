@@ -55,10 +55,10 @@ describe('UserService', () => {
     const loginDto = { username: user.username, password: user.password };
     var loginInformation = await service.LoginUser(loginDto);
     expect(loginInformation).toBeDefined();
-    expect(loginInformation.nome).toBe(user.nome);
+    expect(loginInformation.name).toBe(user.name);
     expect(loginInformation.cpf).toBe(user.cpf);
     expect(loginInformation.email).toBe(user.email);
-    expect(loginInformation.cargo).toBe(user.cargo);
+    expect(loginInformation.role).toBe(user.role);
   });
   it('Should return undefined when no username and password where found', async () => {
     const loginDto = { username: dto.username, password: dto.password };

@@ -1,8 +1,8 @@
 export class AccountRequestDto {
   username: string;
   password: string;
-  nome: string;
+  name: string;
   cpf: string;
   email: string;
-  cargo: string;
+  role: Roles;
 }

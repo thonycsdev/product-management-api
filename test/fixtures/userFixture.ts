@@ -3,8 +3,8 @@ import { AccountRequestDto } from 'src/user/dto/account.request.dto';
 function buildAccountRequestDTO() {
   return {
     cpf: '99999999999',
-    nome: faker.person.fullName(),
-    cargo: faker.person.jobTitle(),
+    name: faker.person.fullName(),
+    role: 'USER',
     email: faker.internet.email(),
     password: faker.internet.password(),
     username: faker.internet.userName(),
