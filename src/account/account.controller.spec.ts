@@ -26,8 +26,10 @@ describe('AccountController', () => {
     controller = module.get<AccountController>(AccountController);
     userService = module.get<UserService>(UserService);
     prisma = module.get<PrismaService>(PrismaService);
-    await prisma.user.deleteMany();
     dto = userFixture.buildAccountRequestDTO();
+  });
+  afterEach(async () => {
+    await prisma.user.deleteMany();
   });
 
   it('Should return 200 when user has correct username and password', async () => {
