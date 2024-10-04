@@ -10,9 +10,10 @@ import { UserController } from './user/user.controller';
 import { UserService } from './user/user.service';
 import { UserModule } from './user/user.module';
 import { AccountModule } from './account/account.module';
+import { ProductModule } from './product/product.module';
 
 @Module({
-  imports: [StatusModule, PrismaModule, UserModule, AccountModule],
+  imports: [StatusModule, PrismaModule, UserModule, AccountModule, ProductModule],
   controllers: [AppController, StatusController, UserController],
   providers: [AppService, PrismaService, StatusService, UserService],
 })
