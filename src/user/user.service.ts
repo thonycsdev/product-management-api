@@ -9,7 +9,17 @@ export class UserService {
 
   async AddUser(user: AccountRequestDto) {
     try {
-      await this.prismaService.user.create({ data: user });
+      await this.prismaService.user.create({
+        data: {
+          name: user.name,
+          cpf: user.cpf,
+          email: user.email,
+          role: user.role,
+          photo: user.photo,
+          password: user.password,
+          username: user.username,
+        },
+      });
       return 0;
     } catch (error) {
       console.error(error);
@@ -36,6 +46,7 @@ export class UserService {
 
     const response: UserResponseDto = {
       name: user.name,
+      photo: user.photo,
       cpf: user.cpf,
       email: user.email,
       role: user.role as Roles,
