@@ -24,6 +24,7 @@ export class AccountController {
       return res.status(HttpStatus.BAD_REQUEST).end();
     var result = await this.accountService.login(req);
     if (result) return res.status(HttpStatus.OK).json(result);
+    console.log(req, result);
     return res.status(HttpStatus.BAD_REQUEST).end();
   }
 }

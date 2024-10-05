@@ -38,7 +38,7 @@ export class UserService {
   async LoginUser(loginDto: { username: string; password: string }) {
     var user = await this.prismaService.user.findUnique({
       where: {
-        username: loginDto.username,
+        cpf: loginDto.username,
         password: loginDto.password,
       },
     });
