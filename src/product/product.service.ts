@@ -13,7 +13,7 @@ export class ProductService {
         data: {
           name: request.name,
           amount: request.amount,
-          price: request.amount,
+          price: request.price,
         },
       });
       return 0;
@@ -40,6 +40,7 @@ export class ProductService {
     });
 
     if (!entity) return -1;
+
     entity.name = request.name;
     entity.amount = request.amount;
     entity.price = request.price as Prisma.Decimal;

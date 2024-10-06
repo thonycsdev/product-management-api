@@ -6,8 +6,8 @@
   "private": true,
   "license": "UNLICENSED",
   "prisma": {
-  "schema": "infra/prisma/schema.prisma"
-    },
+    "schema": "infra/prisma/schema.prisma"
+  },
   "scripts": {
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
@@ -22,7 +22,8 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "services:up": "docker compose -f infra/compose.yml up --build",
-    "services:down": "docker compose -f infra/compose.yml down"
+    "services:down": "docker compose -f infra/compose.yml down",
+    "run:seed": "ts-node ./infra/prisma/scripts/seed.ts"
   },
   "dependencies": {
     "@faker-js/faker": "^9.0.3",
@@ -46,6 +47,7 @@
     "eslint": "^8.42.0",
     "eslint-config-prettier": "^9.0.0",
     "eslint-plugin-prettier": "^5.0.0",
+    "faker-br": "^0.4.1",
     "jest": "^29.5.0",
     "prettier": "^3.0.0",
     "prisma": "^5.20.0",
