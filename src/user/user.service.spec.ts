@@ -20,6 +20,9 @@ describe('UserService', () => {
     dto = userFixture.buildAccountRequestDTO();
     await prisma.user.deleteMany();
   });
+  afterEach(async () => {
+    await prisma.user.deleteMany();
+  });
 
   it('When created a account, should add created at', async () => {
     const result = await service.AddUser(dto);
@@ -49,10 +52,14 @@ describe('UserService', () => {
 
   it('Should return the user information when the username and password are correct', async () => {
     await service.AddUser(dto);
-    var results = await prisma.user.findMany();
-    const user = results[0];
+    const user = await prisma.user.findFirst({
+      where: {
+        cpf: dto.cpf,
+        email: dto.email,
+      },
+    });
 
-    const loginDto = { username: user.username, password: user.password };
+    const loginDto = { username: user.cpf, password: user.password };
     var loginInformation = await service.LoginUser(loginDto);
     expect(loginInformation).toBeDefined();
     expect(loginInformation.name).toBe(user.name);
@@ -61,7 +68,7 @@ describe('UserService', () => {
     expect(loginInformation.role).toBe(user.role);
   });
   it('Should return undefined when no username and password where found', async () => {
-    const loginDto = { username: dto.username, password: dto.password };
+    const loginDto = { username: dto.cpf, password: dto.password };
     var loginInformation = await service.LoginUser(loginDto);
     expect(loginInformation).toBeUndefined();
   });

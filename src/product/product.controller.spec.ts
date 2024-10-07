@@ -31,7 +31,7 @@ describe('ProductController', () => {
   });
 
   it('Should return CREATED status when passed a product DTO request', async () => {
-    const response = await fetch('http://localhost:3000/product', {
+    const response = await fetch('http://localhost:3001/product', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -42,7 +42,7 @@ describe('ProductController', () => {
     expect(response.status).toBe(HttpStatus.CREATED);
   });
   it('Should return BAD REQUEST WHEN NO BODY IS SENDED', async () => {
-    const response = await fetch('http://localhost:3000/product', {
+    const response = await fetch('http://localhost:3001/product', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -64,7 +64,7 @@ describe('ProductController', () => {
       });
     }
 
-    const response = await fetch('http://localhost:3000/product');
+    const response = await fetch('http://localhost:3001/product');
     expect(response.status).toBe(HttpStatus.OK);
 
     const responseBody = await response.json();
@@ -84,7 +84,7 @@ describe('ProductController', () => {
     productWithNewInfo.id = product.id;
 
     const response = await fetch(
-      `http://localhost:3000/product/${productWithNewInfo.id}`,
+      `http://localhost:3001/product/${productWithNewInfo.id}`,
       {
         method: 'PUT',
         headers: {

@@ -35,13 +35,13 @@ describe('AccountController', () => {
   it('Should return 200 when user has correct username and password', async () => {
     await userService.AddUser(dto);
     const user = await prisma.user.findFirst();
-    var response = await fetch('http://localhost:3000/account/login', {
+    var response = await fetch('http://localhost:3001/account/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        username: user.username,
+        username: user.cpf,
         password: user.password,
       }),
     });
@@ -50,7 +50,7 @@ describe('AccountController', () => {
   it('Should return 405 when user has no username in the request', async () => {
     await userService.AddUser(dto);
     const user = await prisma.user.findFirst();
-    var response = await fetch('http://localhost:3000/account/login', {
+    var response = await fetch('http://localhost:3001/account/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -65,7 +65,7 @@ describe('AccountController', () => {
   it('Should return 405 when user has no password in the request', async () => {
     await userService.AddUser(dto);
     const user = await prisma.user.findFirst();
-    var response = await fetch('http://localhost:3000/account/login', {
+    var response = await fetch('http://localhost:3001/account/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -78,7 +78,7 @@ describe('AccountController', () => {
     expect(response.status).toBe(HttpStatus.BAD_REQUEST);
   });
   it('Should return 405 when user has no account', async () => {
-    var response = await fetch('http://localhost:3000/account/login', {
+    var response = await fetch('http://localhost:3001/account/login', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -93,7 +93,7 @@ describe('AccountController', () => {
   it('Should increase the size of the array when create a account for a user', async () => {
     const dto = userFixture.buildAccountRequestDTO();
 
-    var response = await fetch('http://localhost:3000/account/create', {
+    var response = await fetch('http://localhost:3001/account/create', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
