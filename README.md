@@ -2,7 +2,7 @@
 
 Esta é uma API para gerenciamento de produtos e usuários, permitindo realizar operações CRUD (Create, Read, Update, Delete) em ambas as entidades. O projeto foi desenvolvido utilizando **Nest.js**, **Node.js 18**, **TypeScript**, **MySQL** e **Prisma**, com a infraestrutura gerenciada pelo **Docker Compose**.
 
-
+A documentação da API está sendo feita pelo Swagger em `http://localhost:3001/api`
 ## Funcionalidades
 
 - **Gerenciamento de Usuários**:
@@ -82,3 +82,8 @@ Para rodar os testes, rode o seguinte comando
   yarn test
 ```
 Atenção ao rodar os testes localmente. Eles irão manipular os dados do banco de dados local.
+
+## Autor
+
+- [@thonycsdev](https://github.com/thonycsdev)
+
